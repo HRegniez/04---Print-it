@@ -16,28 +16,61 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
-var counter = 0;
-var leftBtn = document.querySelector('.arrow_left');
-var rightBtn = document.querySelector('.arrow_right');
+let counter = 0;
+const leftBtn = document.querySelector('.arrow_left');
+const rightBtn = document.querySelector('.arrow_right');
+const dotsArray = [];
+const dots = document.querySelector('.dots');
+
+
+for (const slide of slides) {
+	const dot = document.createElement('div');
+	dots.appendChild(dot);
+	dot.className = 'dot';
+	dotsArray.push(dot);
+	// for (let i = 0; i < dotsArray.length; i++) {
+	// 	const dot = dotsArray[i];
+		
+	// 	if (i === counter) {
+	// 	  dot.classList.add("dot_selected");
+	// 	} else {
+	// 	  dot.classList.remove("dot_selected");
+	// 	}
+	// }
+}
+const dot =document.querySelectorAll('.dot')
+dot[0].classList.add('dot_selected')
 
 leftBtn.addEventListener('click', () => {
-	counter -= 1;
-	if(counter<0) {
-		counter = 3;
+	counter--
+	if(counter < 0) {
+		counter = slides.length - 1
 	}
-	reload()
+
+	reload();
 })
 rightBtn.addEventListener('click', () => {
-	counter += 1;
-	if(counter>3) {
-		counter = 0;
+	counter++
+	if(counter > slides.length - 1) {
+		counter = 0
 	}
+
 	reload()
 })
 
-let reload = () => {
-	let bannerImg = document.querySelector('#banner .banner-img');
-	let bannerTagLine = document.querySelector('#banner p');
-	bannerImg.innerHTML = `<img class="banner-img" src="./assets/images/slideshow/${slides[counter].image}" alt="Banner Print-it">`;
-	bannerTagLine.innerHTML = slides[counter].tagLine;
-} 
+const reload = () => {
+	const bannerImg = document.querySelector('#banner .banner-img')
+	const bannerTagLine = document.querySelector('#banner p')
+	bannerImg.src = `./assets/images/slideshow/${slides[counter].image}`
+	bannerTagLine.innerHTML = slides[counter].tagLine
+	for (let i = 0; i < dotsArray.length; i++) {
+		const dot = dotsArray[i]
+		
+		if (i === counter) {
+		  dot.classList.add("dot_selected")
+		} else {
+		  dot.classList.remove("dot_selected")
+		}
+	}
+}
+
