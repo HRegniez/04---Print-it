@@ -16,18 +16,17 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
-let counter = 0;
-const leftBtn = document.querySelector('.arrow_left');
-const rightBtn = document.querySelector('.arrow_right');
-const dotsArray = [];
-const dots = document.querySelector('.dots');
-
+let counter = 0
+const leftBtn = document.querySelector('.arrow_left')
+const rightBtn = document.querySelector('.arrow_right')
+const dotsArray = []
+const dots = document.querySelector('.dots')
 
 for (const slide of slides) {
-	const dot = document.createElement('div');
-	dots.appendChild(dot);
-	dot.className = 'dot';
-	dotsArray.push(dot);
+	const dot = document.createElement('div')
+	dots.appendChild(dot)
+	dot.className = 'dot'
+	dotsArray.push(dot)
 }
 const dot =document.querySelectorAll('.dot')
 dot[0].classList.add('dot_selected')
@@ -37,7 +36,7 @@ leftBtn.addEventListener('click', () => {
 	if(counter < 0) {
 		counter = slides.length - 1
 	}
-	reload();
+	reload()
 })
 rightBtn.addEventListener('click', () => {
 	counter++
