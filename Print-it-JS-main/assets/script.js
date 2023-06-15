@@ -28,15 +28,6 @@ for (const slide of slides) {
 	dots.appendChild(dot);
 	dot.className = 'dot';
 	dotsArray.push(dot);
-	// for (let i = 0; i < dotsArray.length; i++) {
-	// 	const dot = dotsArray[i];
-		
-	// 	if (i === counter) {
-	// 	  dot.classList.add("dot_selected");
-	// 	} else {
-	// 	  dot.classList.remove("dot_selected");
-	// 	}
-	// }
 }
 const dot =document.querySelectorAll('.dot')
 dot[0].classList.add('dot_selected')
@@ -46,7 +37,6 @@ leftBtn.addEventListener('click', () => {
 	if(counter < 0) {
 		counter = slides.length - 1
 	}
-
 	reload();
 })
 rightBtn.addEventListener('click', () => {
@@ -54,7 +44,6 @@ rightBtn.addEventListener('click', () => {
 	if(counter > slides.length - 1) {
 		counter = 0
 	}
-
 	reload()
 })
 
@@ -65,7 +54,6 @@ const reload = () => {
 	bannerTagLine.innerHTML = slides[counter].tagLine
 	for (let i = 0; i < dotsArray.length; i++) {
 		const dot = dotsArray[i]
-		
 		if (i === counter) {
 		  dot.classList.add("dot_selected")
 		} else {
